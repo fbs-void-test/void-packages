@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ["${{ github.run_id }}-${{github.run_attempt}}", "medium", "fbs-github-ubuntu-24.04"]
 
     permissions:
       contents: read

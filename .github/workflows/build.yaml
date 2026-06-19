@@ -18,7 +18,7 @@ jobs:
   # Lint changed templates.
   xlint:
     name: Lint templates
-    runs-on: ubuntu-latest
+    runs-on: ["${{ github.run_id }}-${{github.run_attempt}}", "medium", "fbs-github-ubuntu-24.04"]
 
     container:
       image: ghcr.io/void-linux/void-musl-full
@@ -57,7 +57,7 @@ jobs:
   # Build changed packages.
   build:
     name: Build packages
-    runs-on: ubuntu-latest
+    runs-on: ["${{ github.run_id }}-${{github.run_attempt}}-${{ matrix.config.arch }}", "medium", "fbs-github-ubuntu-24.04"]
     if: "!contains(github.event.pull_request.title, '[ci skip]') && !contains(github.event.pull_request.body, '[ci skip]')"
 
     container:
