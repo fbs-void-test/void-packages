@@ -57,7 +57,7 @@ jobs:
   # Build changed packages.
   build:
     name: Build packages
-    runs-on: ["${{ github.run_id }}-${{github.run_attempt}}-${{ matrix.config.arch }}", "medium", "fbs-github-ubuntu-24.04"]
+    runs-on: ["${{ github.run_id }}-${{github.run_attempt}}-${{ matrix.config.arch }}", "size-void", "fbs-github-ubuntu-24.04"]
     if: "!contains(github.event.pull_request.title, '[ci skip]') && !contains(github.event.pull_request.body, '[ci skip]')"
 
     container:
